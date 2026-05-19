@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Formulário</title></head>
+<body>
+  <h1>Link</h1>
+
+  {% if objeto %}
+    <p>Deseja remover o link <strong>{{ objeto.titulo }}</strong>?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Sim, remover</button>
+      <a href="{% url 'listar' %}">Cancelar</a>
+    </form>
+
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Salvar</button>
+      <a href="{% url 'listar' %}">Cancelar</a>
+    </form>
+  {% endif %}
+
+</body>
+</html>

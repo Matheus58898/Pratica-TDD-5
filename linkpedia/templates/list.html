@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Links</title></head>
+<body>
+  <h1>Meus Links</h1>
+  <a href="{% url 'cadastrar' %}">+ Cadastrar novo link</a>
+  <hr>
+  <ul>
+    {% for link in links %}
+      <li>
+        <strong>{{ link.titulo }}</strong> —
+        <a href="{{ link.link }}" target="_blank">{{ link.link }}</a>
+        | <a href="{% url 'atualizar' link.pk %}">Editar</a>
+        | <a href="{% url 'remover' link.pk %}">Remover</a>
+      </li>
+    {% empty %}
+      <li>Nenhum link cadastrado ainda.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
